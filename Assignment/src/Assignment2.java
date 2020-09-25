@@ -1,8 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static java.util.Comparator.comparing;
+import java.util.*;
 
 /**
  * The deadline of this assignment is 09/25/2020 23:59 PST.
@@ -38,9 +34,9 @@ class Employee {
         return salary;
         }
 
-    public int compareTo(Employee otherEmployee){
+    /*public int compareTo(Employee otherEmployee){
         return Double.compare(this.getSalary(), otherEmployee.getSalary());
-    }
+    }*/
 }
 
 enum Gender {
@@ -97,16 +93,34 @@ public class Assignment2 {
      * John Alice Jenny
      */
     public void sortSalary(Employee e1, Employee e2, Employee e3) {
-        List<Employee> employees = new ArrayList<>();
+        /*List<Employee> employees = new ArrayList<Employee>();
         employees.add(e1);
         employees.add(e2);
         employees.add(e3);
-        employees.sort(null);
+        //employees.sort(null);
+        Collections.sort(employees);
         for (Employee employee:employees){
             System.out.println(employee.name);
+        }*/
+        if(e1.salary>e2.salary){
+            swap(e1,e2);
+            if(e1.salary>e3.salary){
+                swap(e2,e3);
+                if(e2.salary>e3.salary){
+                    swap(e1,e2);
+                }
+            }
         }
+        System.out.println(e1.name+" "+e2.name+" "+e3.name);
+
+
     }
 
+    public static void swap(Employee x,Employee y){
+        String temp=x.getName();
+        x.setName(y.getName());
+        y.setName(temp);
+    }
     /**
      * Write a method to raise an employee's salary to three times of his/her original salary.
      * Eg: original salary was 1000/month. After using this method, the salary is 3000/month.
@@ -135,6 +149,7 @@ public class Assignment2 {
      that is, what is passed into the function is only a copy of the original variable,
      so the exchange in the function is a copy, and it cannot reach To the purpose of exchange.
     */
+
     public void main(String[] args) {
         Employee a = new Employee("Jenny", 20, Gender.FEMALE, 2000);
         Employee b = new Employee("John", 30, Gender.MALE, 2500);
@@ -145,9 +160,5 @@ public class Assignment2 {
         System.out.println("After: b=" + b.getName());
     }
 
-    public static void swap(Employee x, Employee y) {
-        Employee temp = x;
-        x = y;
-        y = temp;
-    }
+
 }

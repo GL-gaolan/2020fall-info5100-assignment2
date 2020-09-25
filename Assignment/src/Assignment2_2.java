@@ -32,5 +32,15 @@ public class Assignment2_2 {
         Assignment2_2 obj=new Assignment2_2();
         int maxSubArray = obj.maxSubArray(nums);
         System.out.println(maxSubArray);
+
+        Employee a = new Employee("Jenny", 20, Gender.FEMALE, 2000);
+        Employee b = new Employee("John", 30, Gender.MALE, 1000);
+        Employee c = new Employee("Bonnie", 22, Gender.MALE, 3000);
+
+        Assignment2 obj2 =new Assignment2();
+        obj2.socialSecurityTax(a);
+        obj2.insuranceCoverage(a);
+        obj2.tripleSalary(a);
+        obj2.sortSalary(a,b,c);
     }
 }
